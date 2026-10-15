@@ -627,7 +627,12 @@ export class Board3D {
       // Keep the orientation tied to the current file so it also works after moves.
       if (p.type === 'n') {
         const file = p.square[0]
-        piece.rotation.y = file === 'b' ? -Math.PI / 2 : file === 'g' ? Math.PI / 2 : 0
+        // b-file knights face out to the left; g-file knights face out to the right.
+        // Rotate the visible GLB model, not the invisible pick proxy.
+        const angle = file === 'b' ? -Math.PI / 2 : file === 'g' ? Math.PI / 2 : 0
+        piece.rotation.y = 0
+        const visibleModel = piece.children.find(child => child !== piece.userData.proxy)
+        if (visibleModel) visibleModel.rotation.y = angle
       }
       Object.assign(piece.userData, { square: p.square, type: p.type, color: p.color })
       piece.userData.proxy.userData.square = p.square
@@ -1127,8 +1132,9 @@ export class Board3D {
 
   _ui() {
     this.panel = new StatusPanel()
-    this.panel.mesh.position.set(0, 1.25, BOARD_POS.z - 0.5)
-    this.panel.mesh.rotation.x = -0.15
+    // Place the player clocks beside the board, facing the player.
+    this.panel.mesh.position.set(0.72, 1.25, BOARD_POS.z - 0.12)
+    this.panel.mesh.rotation.set(-0.15, -0.18, 0)
     // Button bar right of the board, within arm's reach, turned toward the player.
     this.bar = new ButtonBar()
     this.bar.onPress = () => this.cue('ui')
