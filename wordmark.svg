@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 64" role="img" aria-label="LibreChessVR — read a real chessboard">
+  <style>
+    .w { font: 700 34px 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; fill: #ECE6D6 }
+    .t { font: 500 17px 'Inter', 'Helvetica Neue', Arial, sans-serif; fill: #9AA3B2 }
+  </style>
+  <rect width="64" height="64" rx="14" fill="#0F1218"/>
+  <rect x="23" y="11" width="30" height="30" rx="3" fill="none" stroke="#D9A441" stroke-width="3"/>
+  <g transform="translate(11 23)">
+    <rect width="15" height="15" fill="#ECE6D6"/><rect x="15" width="15" height="15" fill="#3A4456"/>
+    <rect y="15" width="15" height="15" fill="#3A4456"/><rect x="15" y="15" width="15" height="15" fill="#ECE6D6"/>
+  </g>
+  <text class="w" x="84" y="34">LibreChessVR</text>
+  <text class="t" x="85" y="58">Read a real chessboard</text>
+</svg>
